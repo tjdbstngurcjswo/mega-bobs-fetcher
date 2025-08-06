@@ -51,9 +51,7 @@ const main = async () => {
     if (error)
       console.error('❌ Error inserting data:', error);
     else
-      console.log('🎉 Data inserted successfully');
-
-    // console.log(queryList);
+      console.info('🎉 Data inserted successfully');
   } catch (err) {
     console.error('Error Response:', err.response?.status);
     console.error('Error Data:', err.response?.data);
