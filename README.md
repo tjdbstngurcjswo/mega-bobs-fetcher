@@ -43,7 +43,6 @@ This will:
 ## Project Structure
 - `index.js`: Main entry point, orchestrates fetching and inserting data.
 - `api.js`: API functions for login, fetching tokens, and meal details.
-- `parser.js`: Parses meal data into a format suitable for Supabase.
 - `constant.js`: Constants like course type mappings.
 - `supabase.js`: Supabase client initialization.
 
@@ -94,6 +93,5 @@ node index.js
 ## 프로젝트 구조
 - `index.js`: 메인 진입점, 데이터 가져오기 및 삽입을 조정합니다.
 - `api.js`: 로그인, 토큰 가져오기, 식사 세부 정보 API 함수.
-- `parser.js`: Supabase에 적합한 형식으로 식사 데이터를 파싱합니다.
 - `constant.js`: 코스 유형 매핑과 같은 상수.
 - `supabase.js`: Supabase 클라이언트 초기화.

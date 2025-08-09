@@ -1,10 +1,8 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import { loginAndGetToken, getMealMenu, fetchSessionToken, fetchMealDetailNutrient } from './api.js';
-import { parseMealDataToSQL } from './parser.js';
+import { loginAndGetToken, fetchSessionToken, fetchMealDetailNutrient } from './api.js';
 import { COURSE_TYPE_MAP } from './constant.js';
-// import { supabase } from './supabase.js'; // Remove this static import
 
 const formatDateLocal = (date) => {
   const year = date.getFullYear();
@@ -28,7 +26,7 @@ const getNextWeekDays = () => {
 
 
 
-const main = async () => {
+export const main = async () => {
   const queryList = [];
   const { supabase } = await import('./supabase.js');
 
@@ -60,4 +58,3 @@ const main = async () => {
   }
 };
 
-main();
