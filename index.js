@@ -57,4 +57,3 @@ export const main = async () => {
     console.error('Error Message:', err.message);
   }
 };
-
