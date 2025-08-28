@@ -42,10 +42,10 @@ export async function fetchSessionToken(loginAccessToken) {
 }
 
 
-export async function getMealMenu(sessionToken, dateStr, restaurantCode) {
+export async function getMealMenu(sessionToken, dateStr) {
   const yyyymmdd = dateStr.replace(/-/g, '');
 
-  const url = `https://welplus.welstory.com/api/meal?menuDt=${yyyymmdd}&menuMealType=2&restaurantCode=${restaurantCode}&sortingFlag=basic&mainDivRestaurantCode=${restaurantCode}&activeRestaurantCode=${restaurantCode}`;
+  const url = `https://welplus.welstory.com/api/meal?menuDt=${yyyymmdd}&menuMealType=2&restaurantCode=${RESTAURANT_ID}&sortingFlag=basic&mainDivRestaurantCode=${RESTAURANT_ID}&activeRestaurantCode=${RESTAURANT_ID}`;
   const response = await axios.get(url, {
     headers: {
       Authorization: `Bearer ${sessionToken}`,
