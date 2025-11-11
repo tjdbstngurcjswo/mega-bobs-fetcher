@@ -2,7 +2,7 @@ name: Run MegaBobs Fetcher Weekly
 
 on:
   schedule:
-    - cron: "0 16 * * 3" # 매주 목요일 오전 1시 (KST)
+    - cron: "0 19 * * 3"
   workflow_dispatch:
 
 jobs:
