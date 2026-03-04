@@ -4,23 +4,25 @@ dotenv.config();
 import { loginAndGetToken, fetchSessionToken, fetchMealDetailNutrient } from './api.js';
 import { COURSE_TYPE_MAP } from './constant.js';
 
-const formatDateLocal = (date) => {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
+const toKST = (date) => new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+
+const formatDate = (date) => {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
 };
 
-const getNextWeekDays = () => {
-  const today = new Date();
+const getWeekDays = () => {
+  const today = toKST(new Date());
   const day = today.getDay();
-  const daysUntilNextMonday = (8 - day) % 7 || 7;
-  const mondayDate = today.getDate() + daysUntilNextMonday;
+  const thisMonday = new Date(today);
+  thisMonday.setDate(today.getDate() - (day === 0 ? 6 : day - 1));
 
-  return Array.from({ length: 5 }, (_, i) => {
-    const date = new Date(today);
-    date.setDate(mondayDate + i);
-    return formatDateLocal(date);
+  return Array.from({ length: 10 }, (_, i) => {
+    const date = new Date(thisMonday);
+    date.setDate(thisMonday.getDate() + i + (i >= 5 ? 2 : 0));
+    return formatDate(date);
   });
 };
 
@@ -34,7 +36,7 @@ export const main = async () => {
 		const accessToken = await loginAndGetToken();
 		const sessionToken = await fetchSessionToken(accessToken);
 
-    const weekdays = getNextWeekDays();
+    const weekdays = getWeekDays();
 
     for (const date of weekdays) {
       for (const [courseKey, courseValue] of Object.entries(COURSE_TYPE_MAP)) {

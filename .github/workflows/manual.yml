@@ -2,7 +2,7 @@ name: Run MegaBobs Fetcher Weekly
 
 on:
   schedule:
-    - cron: "0 19 * * 3"
+    - cron: "0 19 * * *"
   workflow_dispatch:
 
 jobs:
